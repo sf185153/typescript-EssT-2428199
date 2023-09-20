@@ -1,8 +1,7 @@
 {
     "compilerOptions": {
-        "allowJs": true,
-        "checkJs": true,
-        "target": "ESNext"
+        "target": "ESNext",
+        "outDir": "build"
     },
-    "include": ["src/**/*", "utils.js"]
+    "include": ["src/**/*"]
 }
