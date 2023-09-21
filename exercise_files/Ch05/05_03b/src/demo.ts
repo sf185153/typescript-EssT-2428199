@@ -13,15 +13,19 @@ const currentUser = {
     }
 }
 
-function authorize(target: any, property: string, descriptor: PropertyDescriptor) {
-    const wrapped = descriptor.value
+function authorize(role: string) {
+    return function (target: any, property: string, descriptor: PropertyDescriptor) {
+        const wrapped = descriptor.value
 
-    descriptor.value = function () {
-        if (!currentUser.isAuthenticated()) {
-            throw Error("User is not authenticated");
+        descriptor.value = function () {
+            if (!currentUser.isAuthenticated()) {
+                throw Error("User is not authenticated");
+            }
+            if (currentUser.isInRole(role)) {
+                throw Error("");
+            }
+            return wrapped.apply(this, arguments);
         }
-
-        return wrapped.apply(this, arguments);
     }
 }
 

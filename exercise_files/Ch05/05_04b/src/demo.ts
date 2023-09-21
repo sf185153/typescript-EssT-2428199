@@ -30,6 +30,12 @@ function authorize(role: string) {
     }
 }
 
+function freeze(target: Function) {
+    Object.freeze(target)
+    Object.freeze(target.prototype)
+}
+
+@freeze
 class ContactRepository {
     private contacts: Contact[] = [];
 
