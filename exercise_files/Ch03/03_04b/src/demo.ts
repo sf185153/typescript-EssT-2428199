@@ -14,17 +14,17 @@ interface Contact {
 }
 
 interface ContactEvent {
-    contactId: number;
+    contactId: Contact["id"];
 }
 
 interface ContactDeletedEvent extends ContactEvent { 
 }
 
 interface ContactStatusChangedEvent extends ContactEvent { 
-    oldStatus: ContactStatus;
+    oldStatus: Contact["status"];
     newStatus: ContactStatus;
 }
-
+type Awsome = Contact["address"]["postalCode"]
 interface ContactEvents {
     deleted: ContactDeletedEvent;
     statusChanged: ContactStatusChangedEvent;

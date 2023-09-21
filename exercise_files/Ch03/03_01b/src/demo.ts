@@ -1,15 +1,19 @@
 type ContactName = string;
 
+/*
 enum ContactStatus {
     Active = "active",
     Inactive = "inactive",
     New = "new"
 }
+*/
+type ContactStatus = "active" | "inactve" | "new"
+type ContactBirthDate = Date | number | string;
 
 interface Contact {
     id: number;
     name: ContactName;
-    birthDate?: Date;
+    birthDate?: ContactBirthDate
     status?: ContactStatus;
 }
 
@@ -32,8 +36,10 @@ function getBirthDate(contact: Contact) {
         return contact.birthDate
     }
 }
+type AddressableContact = Contact & Address
 
 let primaryContact: Contact = {
     id: 12345,
     name: "Jamie Johnson"
 }
+let secondatyContact: AddressableContact 

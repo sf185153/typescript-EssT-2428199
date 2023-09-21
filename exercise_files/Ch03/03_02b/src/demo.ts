@@ -14,3 +14,11 @@ let primaryContact: Contact = {
     name: "Jamie Johnson",
     status: "active"
 }
+
+type CF = keyof Contact; 
+
+function getValue<T>(source: T, propertyName: keyof T) {
+    return source[propertyName]
+}
+
+const value = getValue({min:1, max:200}, "max")
